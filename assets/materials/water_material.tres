@@ -1,0 +1,63 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+render_mode cull_disabled, blend_add, skip_vertex_transform, diffuse_lambert_wrap, specular_disabled;
+
+
+uniform sampler2D colorGradient : hint_albedo;
+uniform sampler2D noise : hind_albedo;
+
+
+uniform float resolution = 256;
+const float cull_distance = 15.;
+uniform vec2 uv_scale = vec2(1.0, 1.0);
+uniform vec2 uv_offset = vec2(.0, .0);
+uniform bool mix_textures = false;
+
+varying vec4 vertex_coordinates;
+
+void vertex() {
+    UV = UV * uv_scale + uv_offset;
+    
+    float vertex_distance = length((MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+    
+    VERTEX = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
+    float vPos_w = (PROJECTION_MATRIX * vec4(VERTEX, 1.0)).w;
+    VERTEX.xy = vPos_w * floor(resolution * VERTEX.xy / vPos_w) / resolution;
+    vertex_coordinates = vec4(UV * VERTEX.z, VERTEX.z, .0);
+    
+    if (vertex_distance > cull_distance)
+        VERTEX = vec3(.0);
+}
+
+
+void fragment() {
+    ALBEDO.rgb = texture(colorGradient, UV.xy).rgb;
+}"
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.0313726, 0.133333, 0.286275, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="OpenSimplexNoise" id=4]
+period = 16.0
+
+[sub_resource type="NoiseTexture" id=5]
+flags = 2
+width = 64
+height = 64
+seamless = true
+noise = SubResource( 4 )
+
+[resource]
+shader = SubResource( 1 )
+shader_param/resolution = 256.0
+shader_param/uv_scale = Vector2( 1, 1 )
+shader_param/uv_offset = Vector2( 0, 0 )
+shader_param/mix_textures = false
+shader_param/colorGradient = SubResource( 3 )
+shader_param/noise = SubResource( 5 )
