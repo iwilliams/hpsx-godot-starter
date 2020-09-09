@@ -8,14 +8,14 @@ The original PS1 supported resolutions from 256×448 to 640×480 pixels. I've se
 but in reality your player isn't going to use this tiny resolution so we scale it up using the test width/height options. To make sure everything
 scales properly, we also set the window stretch mode to viewport and aspect to expand. Using this stretch mode we can easily support 16:9 and fullscreen.
 
-![Window settings](/readme_images/window_settings.png)
+![Window settings](/readme_images/window_setting.png)
 
 ## Importing models from Blender
 
 The best luck I've had importing models from Blender is using the [Godot colloda-exporter](https://github.com/godotengine/collada-exporter) (Check the pull requests for a vesion that works with Blender 2.8+)
 with the following import settings:
 
-![Model import settings](/readme_images/model_import_settings.png)
+![Model import settings](/readme_images/model_import_setting.png)
 
 I've made these import settings the default for all models.
 
@@ -34,4 +34,4 @@ the original shader.
 
 Here you just want to disable filter and mipmaps for that crunchy psx look. I've made this setting the default for all textures.
 
-![Texture import settings](/readme_images/texture_import_settings.png)
+![Texture import settings](/readme_images/texture_import_setting.png)
