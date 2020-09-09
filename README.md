@@ -1,6 +1,9 @@
 # hpsx-godot-starter
 
-![Preview](/readme_images/preview.gif) 
+![Preview](/readme_images/preview.gif)
+
+## Intro
+The purpose of this repository is to act as a staring point for Godot games looking to imitate PSX style graphics.
 
 ## Window Settings
 
@@ -23,7 +26,7 @@ The important bits here are setting your Materials location to `Mesh`, storage t
 time you re-import a new version of your model.
 
 ## PSX Material
-When you assign a material to your model's surface, do so on the MeshInstance node and not the mesh itself. Use the psx_material found in assets/materials, right click and press "Make unique", and then right click and "Save". 
+When you assign a material to your model's surface, do so on the `MeshInstance` node and not the mesh itself. Use the `psx_material.tres` found in `assets/materials`, right click and press "Make unique", and then right click and "Save". 
 This will create a unique material for each texture in your game. Take a look in the `assets/textures` directory for some examples.
 
 I've included a few variations on the PSX material, ray_material, and water_material. These are just some examples, and meant to give you an idea of how you might modify the original shader to get a look you want.
