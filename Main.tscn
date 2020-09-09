@@ -36,6 +36,7 @@ mesh = ExtResource( 4 )
 material/0 = ExtResource( 7 )
 
 [node name="ray" type="MeshInstance" parent="."]
+cast_shadow = 0
 mesh = ExtResource( 3 )
 material/0 = ExtResource( 8 )
 
