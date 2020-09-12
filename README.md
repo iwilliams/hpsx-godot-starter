@@ -4,7 +4,9 @@
 
 ## Intro
 The purpose of this repository is to act as a staring point for Godot games looking to imitate PSX style graphics. I've set up some defaults and included a material to use on your models with some
-explanation below. Please feel free to open a PR if you have some other techniques or examples that might fit in with this starter pack! 
+explanation below. Please feel free to open a PR if you have some other techniques or examples that might fit in with this starter pack!
+
+The main shader being used is a slightly modified version of the one found at https://github.com/marmitoTH/godot-psx-shaders.
 
 ## Window Settings
 
